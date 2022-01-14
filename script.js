@@ -83,9 +83,9 @@ function generatePassword() {
     newChar = allCharacters[Math.floor(Math.random() * allCharacters.length)]
     console.log(newChar);
     password = password.concat(newChar);
-    console.log(password)
+    console.log(password);
   }
 
-  //console.log(password.join(""));
+  console.log(password.join(""));
   return password.join("");
 }
