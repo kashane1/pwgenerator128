@@ -37,21 +37,23 @@ function generatePassword() {
   //combing the users choices into a more readable format to show them later
   var charChoice = "";
   if (isLowercase) {
-    charChoice += "lowercase letters\n"
+    charChoice += "lowercase letters\n";
   }
   if (isUppercase) {
-    charChoice += "upercase letters\n"
+    charChoice += "upercase letters\n";
   }
   if (isNumbers) {
-    charChoice += "numbers\n"
+    charChoice += "numbers\n";
   }
   if (isSpecial) {
-    charChoice += "special characters\n"
+    charChoice += "special characters\n";
   }
   
-
   //confirming with the user the parameters that they chose for their pw, and asking to initiate the pw generator
-  var start = window.confirm("You have chosen to generate a password that is " + pwLength + " characters long.\n\nIt will include:\n" + charChoice + "\nDo you want to continue with generating your password?")
+  var start = window.confirm("You have chosen to generate a password that is " + pwLength + " characters long.\n\nIt will include:\n" + charChoice + "\nDo you want to continue with generating your password?");
+  if (!start){
+    return password;
+  } //added this small if statement for when a user presses cancel on the last question, to return an undefined password
 
   //these arrays hold all the values of each specific character type that will be used when generating the pw
   var lower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
@@ -79,13 +81,13 @@ function generatePassword() {
   var password = [];
   var newChar;
   
+  //this was the trickiest part but i just need to remember the math.floor
   for (var i = 0; i < pwLength; i++) {
-    newChar = allCharacters[Math.floor(Math.random() * allCharacters.length)]
+    newChar = allCharacters[Math.floor(Math.random() * allCharacters.length)];
     console.log(newChar);
     password = password.concat(newChar);
     console.log(password);
   }
 
-  console.log(password.join(""));
   return password.join("");
 }
